@@ -3,10 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
+import { ProfileModel } from './profile.entity';
+import { PostModel } from './post.entity';
 
 
 
@@ -21,7 +25,9 @@ export class UserModel {
   // 프라이머리 칼람은 primary key이고 primarygeneratedcolumn은 primary key 에서 auto incremnet를 포함
   // 매개변수로 uuid도 받을 수 있음
   id: number;
-  @Column({
+
+  email:string
+  /* @Column({
     type:'varchar',
     name:'title',
     length:300,
@@ -31,7 +37,7 @@ export class UserModel {
     default:'default title',
     unique:false //칼럼중 유일무이한 값이 되어야함
   })
-  title: string;
+  title: string; */
 
   @Column({
     type:'enum',
@@ -54,4 +60,12 @@ export class UserModel {
   @Column()
   @Generated('increment') //uuid도 넣을 수 있음 
   additinalId: number;
+
+
+  @OneToOne(()=>ProfileModel,(profile)=>profile.user)
+  profile:ProfileModel
+
+  @OneToMany(()=>PostModel,(post)=>post.author)
+  posts:PostModel[];
+
 }
