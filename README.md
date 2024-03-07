@@ -128,3 +128,16 @@ export enum Role{
 - 로직은 알고 있어야함
 
 
+-  take skip 은 페이지네이션 할때 잘쓰일듯
+-  not() 은 필터링할때 좋을듯
+-  lessthen() lessThenOrEqual()
+-  id:MoreThen()
+-  Like('%google')  유사목록넣을때 좋을듯
+-  Between(10,15)  사잇값
+-  In([1,3,5,7,9,99])  
+
+
+# relational Database
+- one to many
+- many to one
+- Many to Many

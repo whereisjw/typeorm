@@ -15,3 +15,5 @@ export class ProfileModel{
     @Column()
     profileImg:string
 }
+
+

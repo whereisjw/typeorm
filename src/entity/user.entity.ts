@@ -62,10 +62,21 @@ export class UserModel {
   additinalId: number;
 
 
-  @OneToOne(()=>ProfileModel,(profile)=>profile.user)
+  @OneToOne(()=>ProfileModel,(profile)=>profile.user,{
+      // find() 실행할때마다 항상 같이가져올 relation
+/*     eager:true, */
+/*     cascade:false, // 저장할때 relation같이 저장가능 */
+  
+  })
   profile:ProfileModel
 
   @OneToMany(()=>PostModel,(post)=>post.author)
   posts:PostModel[];
+
+
+  @Column({
+    default:0,
+  })
+  count: number
 
 }
